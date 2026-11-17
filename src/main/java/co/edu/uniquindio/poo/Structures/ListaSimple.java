@@ -16,7 +16,7 @@ public class ListaSimple<T> {
         return nodoPrimero == null;
     }
 
-    // Agrega un elemento al final de la lista
+
     public void agregarFinal(T valor) {
         Nodo<T> nuevo = new Nodo<>(valor);
         if (estaVacia()) {
@@ -31,7 +31,7 @@ public class ListaSimple<T> {
         tamano++;
     }
 
-    // Devuelve el valor que esta en la posicion indicada
+    
     public T obtenerValorNodo(int indice) {
         if (indice < 0 || indice >= tamano) {
             return null;

@@ -112,7 +112,7 @@ public class MonederoController {
         actualizarFecha();
     }
 
-    // ================================================================ utilidades
+    // utilidades
 
     private void actualizarFecha() {
         lblFecha.setText("Fecha del sistema: " + servicio.getFechaActual());
@@ -184,7 +184,7 @@ public class MonederoController {
         }
     }
 
-    // ================================================================ pestaña Clientes
+    // pestaña Clientes
 
     @FXML
     private void registrarCliente() {
@@ -222,7 +222,7 @@ public class MonederoController {
         txtMonNombre.clear();
     }
 
-    // ================================================================ pestaña Operaciones
+    // pestaña Operaciones
 
     // Busca el cliente de la cedula escrita y carga sus monederos.
     // Si es el mismo cliente de antes, se respetan los monederos que ya se habian elegido.
@@ -310,7 +310,7 @@ public class MonederoController {
         }
     }
 
-    // ================================================================ pestaña Consultas
+    // pestaña Consultas
 
     private void configurarTablaHistorial() {
         colId.setCellValueFactory(c -> new SimpleStringProperty("#" + c.getValue().getId()));
@@ -391,7 +391,7 @@ public class MonederoController {
         llenarTabla(servicio.buscarCliente(cedula));
     }
 
-    // ================================================================ pestaña Puntos
+    // pestaña Puntos
 
     @FXML
     private void verPuntos() {
@@ -417,7 +417,7 @@ public class MonederoController {
         txtResultadoPuntos.setText(servicio.verRanking());
     }
 
-    // ================================================================ pestaña Programadas
+    // pestaña Programadas
 
     private void cargarClienteProgramadas() {
         String cedula = txtProCedula.getText().trim();
@@ -483,7 +483,7 @@ public class MonederoController {
         actualizarFecha();
     }
 
-    // ================================================================ pestaña Reportes
+    // pestaña Reportes
 
     @FXML
     private void reporteGastos() {
