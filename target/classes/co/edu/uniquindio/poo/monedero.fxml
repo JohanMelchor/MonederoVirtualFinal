@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.Controller.MonederoController">
+
+    <!-- ===================== ENCABEZADO ===================== -->
+    <top>
+        <HBox styleClass="encabezado" alignment="CENTER_LEFT" spacing="12">
+            <VBox>
+                <Label text="Monedero Virtual" styleClass="titulo"/>
+                <Label text="Sistema de puntos · montos en pesos colombianos (COP)" styleClass="subtitulo-encabezado"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblFecha" styleClass="fecha"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- ===================== CLIENTES ===================== -->
+            <Tab text="Clientes">
+                <HBox spacing="16" styleClass="contenido">
+                    <VBox spacing="16" prefWidth="390" minWidth="390">
+                        <VBox styleClass="formulario" spacing="10">
+                            <Label text="Registrar cliente" styleClass="titulo-seccion"/>
+                            <GridPane hgap="10" vgap="10">
+                                <columnConstraints>
+                                    <ColumnConstraints minWidth="90"/>
+                                    <ColumnConstraints hgrow="ALWAYS"/>
+                                </columnConstraints>
+                                <Label text="Cédula" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtRegCedula" promptText="Solo números" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <Label text="Nombre" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtRegNombre" promptText="Nombre completo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                            </GridPane>
+                            <Label text="Se crean los monederos Principal y Ahorros." styleClass="ayuda"/>
+                            <Button text="Registrar cliente" onAction="#registrarCliente" styleClass="boton-principal" maxWidth="Infinity"/>
+                        </VBox>
+                        <VBox styleClass="formulario" spacing="10">
+                            <Label text="Crear monedero" styleClass="titulo-seccion"/>
+                            <GridPane hgap="10" vgap="10">
+                                <columnConstraints>
+                                    <ColumnConstraints minWidth="90"/>
+                                    <ColumnConstraints hgrow="ALWAYS"/>
+                                </columnConstraints>
+                                <Label text="Cédula" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtMonCedula" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <Label text="Monedero" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <TextField fx:id="txtMonNombre" promptText="Ej: Viajes" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                            </GridPane>
+                            <Button text="Crear monedero" onAction="#crearMonedero" styleClass="boton-principal" maxWidth="Infinity"/>
+                        </VBox>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Resultado" styleClass="titulo-seccion"/>
+                        <TextArea fx:id="txtResultadoClientes" editable="false" styleClass="resultado" VBox.vgrow="ALWAYS"
+                                  text="Clientes de ejemplo (cédula):&#10;  41923456    Carlos Ramirez&#10;  1094887766  Laura Gomez&#10;  1097654321  Andres Torres&#10;  1005123987  Sofia Castano"/>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- ===================== OPERACIONES ===================== -->
+            <Tab text="Operaciones">
+                <HBox spacing="16" styleClass="contenido">
+                    <VBox styleClass="formulario" spacing="10" prefWidth="390" minWidth="390">
+                        <Label text="Nueva operación" styleClass="titulo-seccion"/>
+                        <GridPane hgap="10" vgap="10">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="120"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <Label text="Operación" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbTipoOperacion" maxWidth="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                            <Label text="Cédula" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtOpCedula" promptText="Escriba la cédula" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                            <Label fx:id="lblOpCliente" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                            <Label text="Monedero" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbOpMonedero" maxWidth="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                            <Label text="Cédula destino" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtOpCedulaDestino" promptText="Solo para transferir" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                            <Label text="Monedero destino" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbOpMonederoDestino" maxWidth="Infinity" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                            <Label text="Categoría" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbOpCategoria" maxWidth="Infinity" promptText="Solo para gastos" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                            <Label text="Monto (COP)" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtOpMonto" promptText="Ej: 150000" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                        </GridPane>
+                        <Label text="Al escribir una cédula que existe se activan los demás campos. Los que no aplican a la operación quedan desactivados." styleClass="ayuda" wrapText="true"/>
+                        <Button text="Ejecutar operación" onAction="#ejecutarOperacion" styleClass="boton-principal" maxWidth="Infinity"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Resultado" styleClass="titulo-seccion"/>
+                        <TextArea fx:id="txtResultadoOperaciones" editable="false" styleClass="resultado" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- ===================== CONSULTAS ===================== -->
+            <Tab text="Consultas">
+                <VBox spacing="12" styleClass="contenido">
+                    <HBox styleClass="formulario" spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Cédula"/>
+                        <TextField fx:id="txtConCedula" prefWidth="160"/>
+                        <Button text="Consultar saldo" onAction="#consultarSaldo" styleClass="boton-principal"/>
+                        <Button text="Ver historial" onAction="#verHistorial" styleClass="boton-principal"/>
+                        <Button text="Ver notificaciones" onAction="#verNotificaciones" styleClass="boton-principal"/>
+                        <Button text="Revertir última" onAction="#revertirUltima" styleClass="boton-peligro"/>
+                        <Label fx:id="lblConCliente"/>
+                    </HBox>
+                    <TableView fx:id="tblHistorial" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy><TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/></columnResizePolicy>
+                        <placeholder><Label text="Escriba una cédula y pulse Ver historial"/></placeholder>
+                        <columns>
+                            <TableColumn fx:id="colId" text="#" prefWidth="55"/>
+                            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+                            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="290"/>
+                            <TableColumn fx:id="colMonto" text="Monto" prefWidth="150"/>
+                            <TableColumn fx:id="colCargo" text="Cargo" prefWidth="120"/>
+                            <TableColumn fx:id="colPuntos" text="Puntos" prefWidth="80"/>
+                            <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                    <TextArea fx:id="txtResultadoConsultas" editable="false" styleClass="resultado" prefHeight="170"/>
+                </VBox>
+            </Tab>
+
+            <!-- ===================== PUNTOS ===================== -->
+            <Tab text="Puntos y rangos">
+                <HBox spacing="16" styleClass="contenido">
+                    <VBox spacing="16" prefWidth="390" minWidth="390">
+                        <VBox styleClass="formulario" spacing="10">
+                            <Label text="Puntos del cliente" styleClass="titulo-seccion"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Cédula" minWidth="60"/>
+                                <TextField fx:id="txtPunCedula" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+                            <Button text="Ver puntos y rango" onAction="#verPuntos" styleClass="boton-principal" maxWidth="Infinity"/>
+                        </VBox>
+                        <VBox styleClass="formulario" spacing="10">
+                            <Label text="Canjear puntos" styleClass="titulo-seccion"/>
+                            <ComboBox fx:id="cmbCanje" promptText="Seleccione un beneficio" maxWidth="Infinity"/>
+                            <Button text="Canjear" onAction="#canjearPuntos" styleClass="boton-principal" maxWidth="Infinity"/>
+                        </VBox>
+                        <VBox styleClass="formulario" spacing="10">
+                            <Label text="Rangos" styleClass="titulo-seccion"/>
+                            <Label text="Bronce 0-500 · Plata 501-1000 · Oro 1001-5000 · Platino más de 5000" styleClass="ayuda" wrapText="true"/>
+                            <Button text="Ver ranking (árbol AVL)" onAction="#verRanking" styleClass="boton-principal" maxWidth="Infinity"/>
+                        </VBox>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Resultado" styleClass="titulo-seccion"/>
+                        <TextArea fx:id="txtResultadoPuntos" editable="false" styleClass="resultado" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- ===================== PROGRAMADAS ===================== -->
+            <Tab text="Programadas">
+                <HBox spacing="16" styleClass="contenido">
+                    <VBox styleClass="formulario" spacing="10" prefWidth="390" minWidth="390">
+                        <Label text="Programar transacción" styleClass="titulo-seccion"/>
+                        <GridPane hgap="10" vgap="10">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="120"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <Label text="Cédula" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtProCedula" promptText="Escriba la cédula" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                            <Label fx:id="lblProCliente" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                            <Label text="Tipo" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbProTipo" maxWidth="Infinity" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                            <Label text="Monedero" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbProMonedero" maxWidth="Infinity" disable="true" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                            <Label text="Cédula destino" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtProCedulaDestino" promptText="Solo para transferencias" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                            <Label text="Monto (COP)" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtProMonto" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                            <Label text="En cuántos días" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                            <TextField fx:id="txtProDias" promptText="Ej: 7" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                            <Label text="Frecuencia" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                            <ComboBox fx:id="cmbProFrecuencia" maxWidth="Infinity" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                        </GridPane>
+                        <Button text="Programar" onAction="#programar" styleClass="boton-principal" maxWidth="Infinity"/>
+                        <HBox spacing="10">
+                            <Button text="Ver programadas" onAction="#verProgramadas" styleClass="boton-secundario" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                            <Button text="Avanzar un día" onAction="#avanzarDia" styleClass="boton-secundario" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        </HBox>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Resultado" styleClass="titulo-seccion"/>
+                        <TextArea fx:id="txtResultadoProgramadas" editable="false" styleClass="resultado" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- ===================== REPORTES ===================== -->
+            <Tab text="Reportes">
+                <VBox spacing="12" styleClass="contenido">
+                    <HBox styleClass="formulario" spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Cédula"/>
+                        <TextField fx:id="txtRepCedula" prefWidth="160"/>
+                        <Button text="Reporte de gastos" onAction="#reporteGastos" styleClass="boton-principal"/>
+                        <Button text="Reporte de transferencias" onAction="#reporteTransferencias" styleClass="boton-principal"/>
+                        <Button text="Verificar integridad" onAction="#verificarIntegridad" styleClass="boton-secundario"/>
+                    </HBox>
+                    <TextArea fx:id="txtResultadoReportes" editable="false" styleClass="resultado" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

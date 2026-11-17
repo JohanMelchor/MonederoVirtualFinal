@@ -1,0 +1,127 @@
+/* Estilos de la ventana del Monedero Virtual */
+
+.root {
+    -fx-font-family: "Segoe UI", "Arial";
+    -fx-font-size: 13px;
+    -fx-background-color: #eef2f5;
+}
+
+/* Encabezado azul */
+.encabezado {
+    -fx-background-color: #1f4e79;
+    -fx-padding: 14 20 14 20;
+}
+.titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+.subtitulo-encabezado {
+    -fx-text-fill: #c9d9e8;
+}
+.fecha {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Pestañas */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #dbe4ea;
+}
+.tab-pane .tab {
+    -fx-background-color: #c9d5dd;
+    -fx-padding: 6 16 6 16;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: #eef2f5;
+}
+.tab-pane .tab .tab-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f4e79;
+}
+
+.contenido {
+    -fx-padding: 16;
+}
+
+/* Tarjetas blancas de los formularios */
+.formulario {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #d3dce2;
+    -fx-border-radius: 8;
+    -fx-padding: 14;
+}
+.titulo-seccion {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f4e79;
+}
+.ayuda {
+    -fx-text-fill: #6b7a83;
+    -fx-font-size: 12px;
+}
+.mensaje-ok {
+    -fx-text-fill: #2e7d5b;
+    -fx-font-weight: bold;
+}
+.mensaje-error {
+    -fx-text-fill: #b23a2e;
+    -fx-font-weight: bold;
+}
+
+/* Botones */
+.boton-principal {
+    -fx-background-color: #2e7d5b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 7 14 7 14;
+}
+.boton-principal:hover {
+    -fx-background-color: #24654a;
+}
+.boton-secundario {
+    -fx-background-color: #1f4e79;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 7 14 7 14;
+}
+.boton-secundario:hover {
+    -fx-background-color: #173b5c;
+}
+.boton-peligro {
+    -fx-background-color: #b23a2e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 7 14 7 14;
+}
+.boton-peligro:hover {
+    -fx-background-color: #8f2e24;
+}
+
+/* Area de resultados con letra de ancho fijo para que las columnas queden alineadas */
+.resultado {
+    -fx-font-family: "Consolas", "Courier New";
+    -fx-font-size: 13px;
+}
+
+/* Tabla del historial */
+.table-view {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #d3dce2;
+}
+.table-view .column-header {
+    -fx-background-color: #dbe4ea;
+}
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f4e79;
+}
