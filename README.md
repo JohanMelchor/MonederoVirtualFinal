@@ -1,4 +1,4 @@
-# Monedero Virtual (versión 3 - JavaFX)
+# Monedero Virtual
 
 Proyecto final de Estructuras de Datos - Universidad del Quindio 2026-2.
 Autores:
